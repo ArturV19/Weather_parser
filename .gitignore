@@ -1,0 +1,5 @@
+#Следует добавить в gitignore, но в рамках выполнения задания отправляется в репозиторий:
+#key.js
+# Project exclude paths
+/node_modules/
+/index.js

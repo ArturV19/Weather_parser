@@ -1,0 +1,17 @@
+npm init
+
+npm install --save -D typescript
+
+npx tsc --init
+
+npm install express
+
+npm install @types/express
+
+npm install ejs
+
+npm install @types/ejs
+
+npm install body-parser --save
+
+npm install -D ts-node

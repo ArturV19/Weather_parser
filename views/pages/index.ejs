@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <form action="/weather">
+        <div class="form-group">
+            <label for="city">Город</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Введите город">
+        </div>
+        <button type="submit" class="btn btn-primary">Узнать погоду</button>
+    </form>
+</main>
+
+</body>
+</html>

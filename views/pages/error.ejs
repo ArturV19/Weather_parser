@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <title>Ошибка!</title>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <h2>
+        Ошибка: <%= error_code%>
+    </h2>
+
+    <h4>
+        Сообщение: <%= error_message%>
+    </h4>
+</main>
+
+</body>
+</html>
