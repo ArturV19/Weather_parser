@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+   <h2>
+      <%= city%>
+   </h2>
+
+   <div id="root">
+      Loading...
+   </div>
+</main>
+
+<script>
+    function renderInfo({ temp, feels_like, pressure }) {
+    	return `
+    	    <div>
+                  <h4>
+                      Температура: ${temp} градуса(ов) по цельсию
+                  </h4>
+                  <br>
+                  <h4>
+                      Температура ощущается как: ${feels_like} градуса(ов) по цельсию
+                  </h4>
+                  <br>
+                  <h4>
+                      Давление: ${(pressure * 0.75006375541921).toFixed(2)} мм. ртутного столба
+                  </h4>
+            </div>
+    	`
+    }
+
+    function renderError({ code, message }) {
+       return `
+         <h2>
+             Ошибка: ${code}
+         </h2>
+
+         <h4>
+             Сообщение: ${message}
+         </h4>
+       `
+    }
+
+    function fetchCityInfo(city) {
+       return fetch(`/weather_data?city=${city}`).then(res => res.json());
+    }
+
+    const city = '<%=city%>';
+    const root = document.getElementById('root');
+
+    fetchCityInfo(city)
+    .then(data => {
+       if (data.cod !== 200) {
+          root.innerHTML = renderError({ code: data.cod, message: data.message });
+       } else {
+          root.innerHTML = renderInfo(data.main); // { temp: '', presure: '', feels_like: '', .... }
+       }
+    })
+</script>
+
+
+</body>
+</html>
